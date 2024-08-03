@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<h1>ToDo App</h1>
 <body>
+    <div id ="tasks-container">
     
+    </div>
+    <script>
+        const tasks = ["Buy vegetable","Revise localstorage","Go to the gym"];
+
+
+        function loadTasks(){
+            const taskContainer = document.getElementById('tasks-container');
+            taskContainer.innerHTML = '';
+
+            for(const task of tasks)
+        {
+            taskContainer.innerHTML +='
+            <div>
+                ${tasks}
+            </div>'
+
+        }
+        }
+    </script>
 </body>
 </html>
