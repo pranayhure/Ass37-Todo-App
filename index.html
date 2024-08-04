@@ -51,6 +51,19 @@
             task.splice(taskIndex, 1);
             loadTasks();
         }
+        function addTask()  {
+            const taskInputElement = document.getElementById('task-input');
+            const task = taskInputElement.value;
+
+            if(!task){
+                alert('please Enter the task');
+                retun;
+
+            }
+            task.push(task);
+            loadetasks();
+            taskInputElement.value();
+        }
 
 
 
