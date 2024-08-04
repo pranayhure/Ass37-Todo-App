@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes App</title>
+
     <style>
-        .notes-box{
+
+        .notes-box {
             height: 500px;
-            wight:70%;
-            border-radius: 10px;
-            border: 5px salmon
+            background-color: #e6f2ff;
+            width: 80%;
+            border: 4px solid black;
+            border-radius: 15px;
             display: block;
             margin-left: 15%;
             margin-top: 7%;
         }
+
         .heading {
             text-align: center;
             margin: 50px;
@@ -37,7 +42,7 @@
         }
 
         .btn-del {
-            background-color: tomato;
+            background-color: rgb(216, 86, 63);
             color: #fff;
             font-size: 14px;
             font-weight: bold;
@@ -49,7 +54,7 @@
         }
 
         .btn-del:hover {
-            background-color: rgb(255, 123, 100);
+            background-color:#fa8264);
         }
 
         .tasks-container {
@@ -90,72 +95,86 @@
         }
 
         .btn-add:hover {
-            background-color: #80BCBD;
+            background-color: #6cd6d8;
         }
     </style>
 </head>
+
 <body>
-    <div class="notes-box ">
+    <div class="notes-box">
+        <h1 class="heading">Notes - App</h1>
+
         <div id="tasks-container" class="tasks-container"></div>
+
         <div class="task-input-container">
             <input type="text" id="task-input" placeholder="Enter a task" class="task-input">
             <button onclick="addTask()" class="btn-add">Add Task</button>
-
         </div>
-
     </div>
+
     <script>
         const tasks = [
-            "pracitce of JS",
-            "go to gym",
-            "go to the college"
+            "Practice JS examples",
+             "HTML Notes",
+            "CSS Implementation",
+             "Javascript Notes",
+             "React JS Notes"
         ];
 
         function loadFromLocalStorage() {
             const allTasks = JSON.parse(localStorage.getItem('allTasks'));
 
-            if(allTasks){
+            if (allTasks) {
                 tasks.push(...allTasks)
             }
             loadTasks();
-
         }
         loadFromLocalStorage();
 
         function loadTasks() {
-            loacalStorege.setItm('allTasks',JSON.Stringify(tasks));
+            localStorage.setItem('allTasks', JSON.stringify(tasks));
 
-            const tasksContainer =document.getElementById("tasks-container");
-            tasksContainer.innerHTML +='
-            <div class="notes-items">
-            ${push}
-            <button class="btn-del" type="button" onclick="deleteTask('${task}')">
+            const tasksContainer = document.getElementById("tasks-container");
+            tasksContainer.innerHTML = '';
+
+            for (const task of tasks) {
+                tasksContainer.innerHTML += `
+            <div class = "notes-items"> 
+                ${task} 
+                <button class="btn-del" type="button" onclick="deleteTask('${task}')">
                     Delete
                 </button>
-            '
+            </div>
+            `
             }
         }
-        function deleteTask(task){
-            const taskindex=tasks.indexOf(task);
-            task.splice(taskIndex, 1);
+
+        function deleteTask(task) {
+            const taskIndex = tasks.indexOf(task);
+            tasks.splice(taskIndex, 1);
+
             loadTasks();
         }
-        function addTask()  {
+
+        function addTask() {
             const taskInputElement = document.getElementById('task-input');
             const task = taskInputElement.value;
 
-            if(!task){
-                alert('please Enter the task');
-                retun;
-
+            if (!task) {
+                alert('Please Enter a Task');
+                return;
             }
-            task.push(task);
-            loadetasks();
-            taskInputElement.value();
+            tasks.push(task);
+            loadTasks();
+
+            //add notes on top
+            // tasks.unshift(task);
+            // loadTasks();
+
+            taskInputElement.value = '';
         }
-
-
 
     </script>
 </body>
+
 </html>
