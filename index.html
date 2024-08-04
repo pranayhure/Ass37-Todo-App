@@ -32,7 +32,21 @@
 
         }
         loadFromLocalStorage();
-        
+
+        function loadTasks() {
+            loacalStorege.setItm('allTasks',JSON.Stringify(tasks));
+
+            const tasksContainer =document.getElementById("tasks-container");
+            tasksContainer.innerHTML +='
+            <div class="notes-items">
+            ${push}
+            <button class="btn-del" type="button" onclick="deleteTask('${task}')">
+                    Delete
+                </button>
+            '
+            }
+        }
+
 
 
     </script>
