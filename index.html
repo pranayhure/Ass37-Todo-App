@@ -3,30 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notes App</title>
 </head>
-<h1>ToDo App</h1>
 <body>
-    <div id ="tasks-container">
-    
+    <div>
+        <div id="tasks-container" class="tasks-container"></div>
+        <div class="task-input-container">
+            <input type="text" id="task-input" placeholder="Enter a task" class="task-input">
+            <button onclick="addTask()" class="btn-add">Add Task</button>
+
+        </div>
+
     </div>
     <script>
-        const tasks = ["Buy vegetable","Revise localstorage","Go to the gym"];
 
-
-        function loadTasks(){
-            const taskContainer = document.getElementById('tasks-container');
-            taskContainer.innerHTML = '';
-
-            for(const task of tasks)
-        {
-            taskContainer.innerHTML +='
-            <div>
-                ${tasks}
-            </div>'
-
-        }
-        }
     </script>
 </body>
 </html>
