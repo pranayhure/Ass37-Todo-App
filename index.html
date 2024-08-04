@@ -46,6 +46,11 @@
             '
             }
         }
+        function deleteTask(task){
+            const taskindex=tasks.indexOf(task);
+            task.splice(taskIndex, 1);
+            loadTasks();
+        }
 
 
 
